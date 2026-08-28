@@ -1,3 +1,5 @@
+import Card from '../components/Card'
+
 function DashboardPage() {
   return (
     <section aria-labelledby="dashboard-heading">
@@ -6,6 +8,10 @@ function DashboardPage() {
       <p className="intro">
         View your active insurance policies and manage your claims.
       </p>
+
+      <Card title="Active policies">
+        <p>Your policy information will be shown here.</p>
+      </Card>
     </section>
   )
 }
