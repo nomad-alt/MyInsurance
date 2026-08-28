@@ -1,0 +1,53 @@
+.section-heading {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+.policy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.policy-list .card {
+  height: 100%;
+}
+
+.policy-details {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.policy-details div {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.policy-details dt {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.policy-details dd {
+  margin: 0;
+}
+
+.policy-status {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  color: #155724;
+  background-color: #dff2e3;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.policy-link {
+  color: var(--color-brand);
+  font-weight: 700;
+  text-underline-offset: 0.25rem;
+}
