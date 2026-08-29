@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import Card from '../components/Card'
-import { policies } from '../data/policies'
+import { getPolicyById } from '../services/insuranceService'
 import './InsuranceDetailsPage.css'
 
 const dateFormatter = new Intl.DateTimeFormat('en-GB', {
@@ -9,7 +9,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', {
 
 function InsuranceDetailsPage() {
   const { policyId } = useParams()
-  const policy = policies.find((item) => item.id === policyId)
+  const policy = policyId ? getPolicyById(policyId) : undefined
 
   if (!policy) {
     return (

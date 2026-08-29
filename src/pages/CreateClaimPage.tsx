@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { policies } from '../data/policies'
+import { getActivePolicies } from '../services/insuranceService'
 import './CreateClaimPage.css'
 
 type ClaimFormData = {
@@ -37,6 +37,7 @@ function validateForm(formData: ClaimFormData) {
 }
 
 function CreateClaimPage() {
+  const activePolicies = getActivePolicies()
   const [formData, setFormData] = useState(initialFormData)
   const [errors, setErrors] = useState<ClaimFormErrors>({})
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -96,13 +97,11 @@ function CreateClaimPage() {
             required
           >
             <option value="">Select a policy</option>
-            {policies
-              .filter((policy) => policy.status === 'active')
-              .map((policy) => (
-                <option key={policy.id} value={policy.id}>
-                  {policy.name} ({policy.policyNumber})
-                </option>
-              ))}
+            {activePolicies.map((policy) => (
+              <option key={policy.id} value={policy.id}>
+                {policy.name} ({policy.policyNumber})
+              </option>
+            ))}
           </select>
           {errors.policyId && (
             <p className="field-error" id="policy-error">

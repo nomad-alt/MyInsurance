@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Badge, { type BadgeVariant } from '../components/Badge'
 import Card from '../components/Card'
 import { claims } from '../data/claims'
-import { policies } from '../data/policies'
+import { getPolicyById } from '../services/insuranceService'
 import type { ClaimStatus } from '../types/claim'
 import './ClaimsPage.css'
 
@@ -37,9 +37,7 @@ function ClaimsPage() {
 
       <ul className="claim-list">
         {claims.map((claim) => {
-          const policyName = policies.find(
-            (policy) => policy.id === claim.policyId,
-          )?.name
+          const policyName = getPolicyById(claim.policyId)?.name
 
           return (
             <li key={claim.id}>

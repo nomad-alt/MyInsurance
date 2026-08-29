@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Badge from '../components/Badge'
 import Card from '../components/Card'
-import { policies } from '../data/policies'
+import { getActivePolicies } from '../services/insuranceService'
 import './DashboardPage.css'
 
 const dateFormatter = new Intl.DateTimeFormat('en-GB', {
@@ -9,7 +9,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', {
 })
 
 function DashboardPage() {
-  const activePolicies = policies.filter((policy) => policy.status === 'active')
+  const activePolicies = getActivePolicies()
 
   return (
     <section aria-labelledby="dashboard-heading">
