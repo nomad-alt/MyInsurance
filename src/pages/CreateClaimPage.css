@@ -1,0 +1,61 @@
+.claim-confirmation {
+  margin: 2rem 0 0;
+  padding: 1rem;
+  border: 1px solid #287a3d;
+  border-radius: 0.25rem;
+  color: #155724;
+  background-color: #dff2e3;
+  font-weight: 700;
+}
+
+.claim-form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 40rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #dededb;
+  border-radius: 0.5rem;
+  background-color: var(--color-surface);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #777;
+  border-radius: 0.25rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  font: inherit;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  justify-self: start;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-brand);
+  border-radius: 0.25rem;
+  color: var(--color-on-brand);
+  background-color: var(--color-brand);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  filter: brightness(0.9);
+}
