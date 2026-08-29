@@ -30,4 +30,29 @@ describe('CreateClaimPage', () => {
       'true',
     )
   })
+
+  it('confirms a valid claim and resets the form', async () => {
+    const user = userEvent.setup()
+    render(<CreateClaimPage />)
+
+    const policySelect = screen.getByLabelText('Insurance policy')
+    const incidentDate = screen.getByLabelText('Incident date')
+    const description = screen.getByLabelText('What happened?')
+
+    await user.selectOptions(policySelect, 'home-1')
+    await user.type(incidentDate, '2026-08-10')
+    await user.type(
+      description,
+      'Water damaged the kitchen floor and lower cabinets.',
+    )
+    await user.click(screen.getByRole('button', { name: 'Submit claim' }))
+
+    expect(screen.getByRole('status')).toHaveTextContent(
+      'Your claim has been received. Reference: CLM-DEMO-',
+    )
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    expect(policySelect).toHaveValue('')
+    expect(incidentDate).toHaveValue('')
+    expect(description).toHaveValue('')
+  })
 })
