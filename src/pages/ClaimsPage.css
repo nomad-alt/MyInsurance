@@ -23,29 +23,7 @@
 }
 
 .claim-status {
-  display: inline-block;
   margin: 0 0 1rem;
-  padding: 0.25rem 0.625rem;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
-.claim-status--submitted,
-.claim-status--in-review {
-  color: #765800;
-  background-color: #fff4cc;
-}
-
-.claim-status--approved {
-  color: #155724;
-  background-color: #dff2e3;
-}
-
-.claim-status--rejected {
-  color: #8a1c1c;
-  background-color: #fbe1e1;
 }
 
 .claim-description {

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Badge from '../components/Badge'
 import Card from '../components/Card'
 import { policies } from '../data/policies'
 import './DashboardPage.css'
@@ -27,7 +28,7 @@ function DashboardPage() {
                 <div>
                   <dt>Status</dt>
                   <dd>
-                    <span className="policy-status">Active</span>
+                    <Badge variant="success">Active</Badge>
                   </dd>
                 </div>
                 <div>

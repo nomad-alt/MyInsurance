@@ -36,16 +36,6 @@
   margin: 0;
 }
 
-.policy-status {
-  display: inline-block;
-  padding: 0.125rem 0.5rem;
-  border-radius: 999px;
-  color: #155724;
-  background-color: #dff2e3;
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
 .policy-link {
   color: var(--color-brand);
   font-weight: 700;

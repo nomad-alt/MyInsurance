@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Badge, { type BadgeVariant } from '../components/Badge'
 import Card from '../components/Card'
 import { claims } from '../data/claims'
 import { policies } from '../data/policies'
@@ -10,6 +11,13 @@ const statusLabels: Record<ClaimStatus, string> = {
   'in-review': 'In review',
   approved: 'Approved',
   rejected: 'Rejected',
+}
+
+const statusVariants: Record<ClaimStatus, BadgeVariant> = {
+  submitted: 'warning',
+  'in-review': 'warning',
+  approved: 'success',
+  rejected: 'danger',
 }
 
 const dateFormatter = new Intl.DateTimeFormat('en-GB', {
@@ -36,9 +44,11 @@ function ClaimsPage() {
           return (
             <li key={claim.id}>
               <Card title={claim.claimNumber}>
-                <p className={`claim-status claim-status--${claim.status}`}>
-                  Status: {statusLabels[claim.status]}
-                </p>
+                <div className="claim-status">
+                  <Badge variant={statusVariants[claim.status]}>
+                    Status: {statusLabels[claim.status]}
+                  </Badge>
+                </div>
                 <p className="claim-description">{claim.description}</p>
                 <dl className="claim-details">
                   <div>
