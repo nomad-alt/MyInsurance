@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Badge, { type BadgeVariant } from '../components/Badge'
 import Card from '../components/Card'
-import { claims } from '../data/claims'
+import { getClaims } from '../services/claimsService'
 import { getPolicyById } from '../services/insuranceService'
 import type { ClaimStatus } from '../types/claim'
 import './ClaimsPage.css'
@@ -25,6 +25,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', {
 })
 
 function ClaimsPage() {
+  const claims = getClaims()
+
   return (
     <section aria-labelledby="claims-heading">
       <p className="eyebrow">Your cases</p>

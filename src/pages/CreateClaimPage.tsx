@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from 'react'
+import {
+  createClaim,
+  type CreateClaimInput,
+} from '../services/claimsService'
 import { getActivePolicies } from '../services/insuranceService'
 import './CreateClaimPage.css'
 
-type ClaimFormData = {
-  policyId: string
-  incidentDate: string
-  description: string
-}
+type ClaimFormData = CreateClaimInput
 
 type ClaimFormErrors = Partial<Record<keyof ClaimFormData, string>>
 
@@ -40,7 +40,9 @@ function CreateClaimPage() {
   const activePolicies = getActivePolicies()
   const [formData, setFormData] = useState(initialFormData)
   const [errors, setErrors] = useState<ClaimFormErrors>({})
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submittedClaimNumber, setSubmittedClaimNumber] = useState<
+    string | null
+  >(null)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -49,17 +51,19 @@ function CreateClaimPage() {
     setErrors(validationErrors)
 
     if (Object.keys(validationErrors).length > 0) {
-      setIsSubmitted(false)
+      setSubmittedClaimNumber(null)
       return
     }
 
-    setIsSubmitted(true)
+    const newClaim = createClaim(formData)
+    setSubmittedClaimNumber(newClaim.claimNumber)
+    setFormData(initialFormData)
   }
 
   const updateField = (field: keyof ClaimFormData, value: string) => {
     setFormData({ ...formData, [field]: value })
     setErrors({ ...errors, [field]: undefined })
-    setIsSubmitted(false)
+    setSubmittedClaimNumber(null)
   }
 
   const hasErrors = Object.values(errors).some(Boolean)
@@ -72,9 +76,9 @@ function CreateClaimPage() {
         Tell us which policy is affected and what happened.
       </p>
 
-      {isSubmitted && (
+      {submittedClaimNumber && (
         <p className="claim-confirmation" role="status">
-          Your claim has been received in this demo.
+          Your claim has been received. Reference: {submittedClaimNumber}.
         </p>
       )}
 
